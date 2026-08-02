@@ -1,0 +1,293 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap");
+
+:root {
+  --ink: #1c1d1a;
+  --paper: #f7f2e9;
+  --tomato: #e94b32;
+  --gold: #f7bc4a;
+  --line: #d9d1c4;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Manrope, Arial, sans-serif;
+}
+.landing {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  position: relative;
+  padding: 32px;
+}
+.hero {
+  text-align: center;
+  max-width: 650px;
+  z-index: 1;
+}
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  font:
+    12px "DM Mono",
+    monospace;
+  font-weight: bold;
+  color: #7b5946;
+  margin: 0 0 18px;
+}
+.hero h1,
+.card h1 {
+  font:
+    clamp(50px, 9vw, 96px)/0.91 "DM Serif Display",
+    Georgia,
+    serif;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+.hero h1 em {
+  color: var(--tomato);
+  font-weight: normal;
+}
+.lede {
+  font-size: 18px;
+  line-height: 1.65;
+  color: #55504a;
+  max-width: 440px;
+  margin: 26px auto;
+}
+.button {
+  border: 0;
+  border-radius: 999px;
+  padding: 16px 24px;
+  font: 600 15px Manrope;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+}
+.primary {
+  background: var(--ink);
+  color: white;
+}
+.primary span {
+  font-size: 21px;
+  line-height: 10px;
+}
+.secondary {
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  margin-top: 22px;
+}
+.hint {
+  font-size: 12px;
+  color: #80796f;
+  margin: 18px 0;
+}
+.film-strip {
+  position: absolute;
+  width: 112%;
+  height: 44px;
+  top: 11%;
+  transform: rotate(-4deg);
+  background: repeating-linear-gradient(90deg, var(--ink) 0 36px, transparent 36px 48px);
+  opacity: 0.85;
+}
+.reel {
+  position: absolute;
+  bottom: 8%;
+  font: 72px Georgia;
+  color: var(--gold);
+  white-space: nowrap;
+  letter-spacing: 20px;
+}
+.app-shell {
+  max-width: 720px;
+  margin: auto;
+  padding: 20px 20px 64px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0 54px;
+}
+header a {
+  font: 700 14px "DM Mono";
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--ink);
+}
+header i {
+  color: var(--tomato);
+  font-style: normal;
+}
+.share {
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  padding: 9px 13px;
+  background: #fffcf7;
+  font: 12px "DM Mono";
+  cursor: pointer;
+}
+.card {
+  background: #fffcf7;
+  border: 1px solid var(--line);
+  box-shadow: 7px 7px 0 #e4dacb;
+  padding: clamp(26px, 6vw, 56px);
+  border-radius: 5px;
+}
+.card h1 {
+  font-size: clamp(45px, 8vw, 68px);
+}
+.subcopy {
+  color: #676159;
+  line-height: 1.6;
+  max-width: 440px;
+  margin: 18px 0 32px;
+}
+.toggle {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px;
+  margin-bottom: 44px;
+  float: right;
+}
+.toggle button {
+  border: 0;
+  background: transparent;
+  border-radius: 999px;
+  padding: 7px 14px;
+  cursor: pointer;
+  font: 600 12px Manrope;
+  color: #777;
+}
+.toggle .active {
+  background: var(--ink);
+  color: #fff;
+}
+.pick-list {
+  display: grid;
+  gap: 12px;
+}
+.pick-list label {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.pick-list label > span,
+.rank-row b {
+  font: 13px "DM Mono";
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--gold);
+}
+input {
+  min-width: 0;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 15px;
+  font: 15px Manrope;
+  background: #fffdf9;
+  color: var(--ink);
+}
+input:focus {
+  outline: 2px solid var(--gold);
+  border-color: var(--gold);
+}
+.ranking {
+  border-top: 1px solid var(--line);
+  margin: 26px 0;
+}
+.rank-row {
+  display: grid;
+  grid-template-columns: 36px 1fr 33px 33px;
+  align-items: center;
+  gap: 5px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+}
+.rank-row b {
+  background: #ece6db;
+}
+.rank-row span {
+  font: 600 15px Manrope;
+}
+.rank-row button {
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  cursor: pointer;
+}
+.waiting {
+  text-align: center;
+  font-size: 13px;
+  color: #7c756b;
+}
+.results {
+  text-align: center;
+}
+.results h1 {
+  color: var(--tomato);
+  margin-bottom: 8px;
+}
+.trophy {
+  width: 62px;
+  height: 62px;
+  margin: 3px auto 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--gold);
+  font-size: 28px;
+}
+.score-list {
+  text-align: left;
+  margin-top: 35px;
+  border-top: 1px solid var(--line);
+}
+.score-list div {
+  display: grid;
+  grid-template-columns: 30px 1fr auto;
+  gap: 9px;
+  padding: 13px 4px;
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+}
+.score-list span {
+  font: 12px "DM Mono";
+  color: #777;
+}
+.score-list small {
+  font: 12px "DM Mono";
+  color: #777;
+}
+@media (max-width: 520px) {
+  header {
+    margin-bottom: 36px;
+  }
+  .card {
+    padding: 26px 20px;
+  }
+  .toggle {
+    margin-bottom: 32px;
+  }
+  .reel {
+    font-size: 44px;
+  }
+  .film-strip {
+    top: 8%;
+  }
+}
