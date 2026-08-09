@@ -12,7 +12,6 @@ type Props = {
   picks: Record<Player, string[]>;
   draftPicks: Record<Player, string[]>;
   setDraftPicks: React.Dispatch<React.SetStateAction<Record<Player, string[]>>>;
-  setPicks: React.Dispatch<React.SetStateAction<Record<Player, string[]>>>;
   submitPicks: () => void;
 };
 
@@ -25,7 +24,6 @@ export const Selection = ({
   picks,
   draftPicks,
   setDraftPicks,
-  setPicks,
   submitPicks,
 }: Props) => {
   const { updatePick } = useSelectionViewModel({ setDraftPicks, player });

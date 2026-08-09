@@ -62,7 +62,6 @@ export default function SessionPage() {
       picks={picks}
       draftPicks={draftPicks}
       setDraftPicks={setDraftPicks}
-      setPicks={setPicks}
       submitPicks={submitPicks}
     />
   );
