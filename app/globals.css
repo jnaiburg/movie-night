@@ -176,6 +176,9 @@ header i {
   display: grid;
   gap: 12px;
 }
+.pick-submit {
+  margin-top: 22px;
+}
 .pick-list label {
   display: flex;
   align-items: center;
