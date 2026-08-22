@@ -17,6 +17,8 @@ export default function SessionPage() {
     submitPicks,
     rankings,
     setRankings,
+    draftRankings,
+    setDraftRankings,
     copied,
     ready,
     movies,
@@ -32,6 +34,8 @@ export default function SessionPage() {
         copied={copied}
         setRankings={setRankings}
         setPicks={setPicks}
+        setDraftPicks={setDraftPicks}
+        setDraftRankings={setDraftRankings}
         bothRanked={bothRanked}
         movies={movies}
         rankings={rankings}
@@ -48,6 +52,8 @@ export default function SessionPage() {
         copied={copied}
         setRankings={setRankings}
         rankings={rankings}
+        draftRankings={draftRankings}
+        setDraftRankings={setDraftRankings}
         movies={movies}
       />
     );

@@ -7,6 +7,8 @@ type Props = {
   copied: boolean;
   setRankings: React.Dispatch<React.SetStateAction<Rankings>>;
   setPicks: React.Dispatch<React.SetStateAction<Picks>>;
+  setDraftPicks: React.Dispatch<React.SetStateAction<Picks>>;
+  setDraftRankings: React.Dispatch<React.SetStateAction<Rankings>>;
   bothRanked: boolean;
   movies: string[];
   rankings: Rankings;
@@ -18,6 +20,8 @@ export const Winner = ({
   copied,
   setRankings,
   setPicks,
+  setDraftPicks,
+  setDraftRankings,
   bothRanked,
   movies,
   rankings,
@@ -46,7 +50,9 @@ export const Winner = ({
           className="button secondary"
           onClick={() => {
             setRankings({ you: null, them: null });
+            setDraftRankings({ you: null, them: null });
             setPicks({ you: ["", "", ""], them: ["", "", ""] });
+            setDraftPicks({ you: ["", "", ""], them: ["", "", ""] });
           }}
         >
           Start over

@@ -10,6 +10,8 @@ type Props = {
   copied: boolean;
   setRankings: React.Dispatch<React.SetStateAction<Record<Player, string[] | null>>>;
   rankings: Record<Player, string[] | null>;
+  draftRankings: Record<Player, string[] | null>;
+  setDraftRankings: React.Dispatch<React.SetStateAction<Record<Player, string[] | null>>>;
   movies: string[];
   id: string;
 };
@@ -21,10 +23,17 @@ export const Ranking = ({
   copied,
   setRankings,
   rankings,
+  draftRankings,
+  setDraftRankings,
   movies,
   id,
 }: Props) => {
-  const { currentRanking, move } = useRankingViewModel({ rankings, player, movies, setRankings });
+  const { currentRanking, move } = useRankingViewModel({
+    rankings: draftRankings,
+    player,
+    movies,
+    setRankings: setDraftRankings,
+  });
 
   return (
     <main className="app-shell">
@@ -52,7 +61,10 @@ export const Ranking = ({
         </div>
         <button
           className="button primary"
-          onClick={() => setRankings((previous) => ({ ...previous, [player]: currentRanking }))}
+          onClick={() => {
+            setDraftRankings((previous) => ({ ...previous, [player]: currentRanking }));
+            setRankings((previous) => ({ ...previous, [player]: currentRanking }));
+          }}
         >
           {rankings[player] ? "Update ranking" : "Lock in my ranking"} <span>→</span>
         </button>

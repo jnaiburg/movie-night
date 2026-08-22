@@ -10,6 +10,7 @@ export const useSessionPageViewModel = () => {
   const [player, setPlayer] = useState<Player>(Player.YOU);
   const [draftPicks, setDraftPicks] = useState<Picks>({ you: ["", "", ""], them: ["", "", ""] });
   const [picks, setPicks] = useState<Picks>({ you: ["", "", ""], them: ["", "", ""] });
+  const [draftRankings, setDraftRankings] = useState<Rankings>({ you: null, them: null });
   const [rankings, setRankings] = useState<Rankings>({ you: null, them: null });
   const [copied, setCopied] = useState(false);
 
@@ -43,6 +44,8 @@ export const useSessionPageViewModel = () => {
     submitPicks,
     rankings,
     setRankings,
+    draftRankings,
+    setDraftRankings,
     copied,
     ready,
     movies,
