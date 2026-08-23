@@ -8,6 +8,7 @@ import { useSessionPageViewModel } from "../../../components/useSessionPageViewM
 export default function SessionPage() {
   const {
     id,
+    names,
     player,
     setPlayer,
     picks,
@@ -54,6 +55,7 @@ export default function SessionPage() {
         rankings={rankings}
         draftRankings={draftRankings}
         setDraftRankings={setDraftRankings}
+        names={names}
         movies={movies}
       />
     );
@@ -69,6 +71,7 @@ export default function SessionPage() {
       draftPicks={draftPicks}
       setDraftPicks={setDraftPicks}
       submitPicks={submitPicks}
+      names={names}
     />
   );
 }

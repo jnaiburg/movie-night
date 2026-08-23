@@ -12,6 +12,7 @@ type Props = {
   rankings: Record<Player, string[] | null>;
   draftRankings: Record<Player, string[] | null>;
   setDraftRankings: React.Dispatch<React.SetStateAction<Record<Player, string[] | null>>>;
+  names: Record<Player, string>;
   movies: string[];
   id: string;
 };
@@ -25,6 +26,7 @@ export const Ranking = ({
   rankings,
   draftRankings,
   setDraftRankings,
+  names,
   movies,
   id,
 }: Props) => {
@@ -39,7 +41,7 @@ export const Ranking = ({
     <main className="app-shell">
       <Header id={id} onCopy={copyLink} copied={copied} />
       <section className="card">
-        <PlayerToggle player={player} setPlayer={setPlayer} />
+        <PlayerToggle player={player} setPlayer={setPlayer} names={names} />
         <p className="eyebrow">Rank your picks</p>
         <h1>What sounds best?</h1>
         <p className="subcopy">
@@ -69,7 +71,9 @@ export const Ranking = ({
           {rankings[player] ? "Update ranking" : "Lock in my ranking"} <span>→</span>
         </button>
         {rankings[player] && (
-          <p className="waiting">Your ranking is in. Waiting for the other person…</p>
+          <p className="waiting">
+            Your ranking is in. Waiting for {player === Player.YOU ? names[Player.THEM] : names[Player.YOU]}…
+          </p>
         )}
       </section>
     </main>
