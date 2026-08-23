@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { makeCode } from "../utils/code";
 
 export default function Home() {
   const code = makeCode();
+
   return (
     <main className="landing">
       <div className="film-strip" aria-hidden="true" />
@@ -13,9 +13,23 @@ export default function Home() {
           <em>watching?</em>
         </h1>
         <p className="lede">Bring your three picks. Rank the six. Let the movie gods decide.</p>
-        <Link className="button primary" href={`/session/${code}`}>
-          Start movie night <span>→</span>
-        </Link>
+
+        <form className="name-form" method="get" action={`/session/${code}`}>
+          <div className="name-fields">
+            <label className="field">
+              <span>Your name</span>
+              <input name="you" type="text" defaultValue="You" />
+            </label>
+            <label className="field">
+              <span>Their name</span>
+              <input name="them" type="text" defaultValue="Them" />
+            </label>
+          </div>
+
+          <button className="button primary" type="submit">
+            Start movie night <span>→</span>
+          </button>
+        </form>
       </section>
     </main>
   );

@@ -13,6 +13,7 @@ type Props = {
   draftPicks: Record<Player, string[]>;
   setDraftPicks: React.Dispatch<React.SetStateAction<Record<Player, string[]>>>;
   submitPicks: () => void;
+  names: Record<Player, string>;
 };
 
 export const Selection = ({
@@ -25,13 +26,14 @@ export const Selection = ({
   draftPicks,
   setDraftPicks,
   submitPicks,
+  names,
 }: Props) => {
   const { updatePick } = useSelectionViewModel({ setDraftPicks, player });
   return (
     <main className="app-shell">
       <Header id={id} onCopy={copyLink} copied={copied} />
       <section className="card">
-        <PlayerToggle player={player} setPlayer={setPlayer} />
+        <PlayerToggle player={player} setPlayer={setPlayer} names={names} />
         <p className="eyebrow">Round one of two</p>
         <h1>Pick three movies.</h1>
         <p className="subcopy">
@@ -61,8 +63,8 @@ export const Selection = ({
         </form>
         <p className="hint">
           {picks.you.every(Boolean) && !picks.them.every(Boolean)
-            ? "Your picks are in—hand it over to them."
-            : "Both of you add your picks, then the ranking begins."}
+            ? `Your picks are in—hand it over to ${names[Player.THEM]}.`
+            : `Both ${names[Player.YOU]} and ${names[Player.THEM]} add their picks, then the ranking begins.`}
         </p>
       </section>
     </main>

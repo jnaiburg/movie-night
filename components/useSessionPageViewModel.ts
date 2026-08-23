@@ -7,6 +7,18 @@ export const useSessionPageViewModel = () => {
     if (typeof window === "undefined") return "MOVIE";
     return window.location.pathname.split("/").pop()?.toUpperCase() ?? "MOVIE";
   });
+  const [names] = useState<Record<Player, string>>(() => {
+    if (typeof window === "undefined") {
+      return { [Player.YOU]: "You", [Player.THEM]: "Them" };
+    }
+
+    const params = new URLSearchParams(window.location.search);
+
+    return {
+      [Player.YOU]: params.get("you")?.trim() || "You",
+      [Player.THEM]: params.get("them")?.trim() || "Them",
+    };
+  });
   const [player, setPlayer] = useState<Player>(Player.YOU);
   const [draftPicks, setDraftPicks] = useState<Picks>({ you: ["", "", ""], them: ["", "", ""] });
   const [picks, setPicks] = useState<Picks>({ you: ["", "", ""], them: ["", "", ""] });
@@ -35,6 +47,7 @@ export const useSessionPageViewModel = () => {
 
   return {
     id,
+    names,
     player,
     setPlayer,
     picks,
