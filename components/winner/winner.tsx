@@ -1,14 +1,12 @@
-import { Picks, Rankings } from "../../app/types/rankings";
+import { Rankings } from "../../app/types/rankings";
 import { Header } from "../header";
 import { useWinnerViewModel } from "./winner.viewModel";
 
 type Props = {
-  copyLink: () => void;
+  copyLink: () => Promise<void>;
   copied: boolean;
-  setRankings: React.Dispatch<React.SetStateAction<Rankings>>;
-  setPicks: React.Dispatch<React.SetStateAction<Picks>>;
-  setDraftPicks: React.Dispatch<React.SetStateAction<Picks>>;
-  setDraftRankings: React.Dispatch<React.SetStateAction<Rankings>>;
+  copyError: string | null;
+  resetSession: () => void;
   bothRanked: boolean;
   movies: string[];
   rankings: Rankings;
@@ -18,10 +16,8 @@ type Props = {
 export const Winner = ({
   copyLink,
   copied,
-  setRankings,
-  setPicks,
-  setDraftPicks,
-  setDraftRankings,
+  copyError,
+  resetSession,
   bothRanked,
   movies,
   rankings,
@@ -31,7 +27,7 @@ export const Winner = ({
 
   return (
     <main className="app-shell">
-      <Header id={id} onCopy={copyLink} copied={copied} />
+      <Header id={id} onCopy={copyLink} copied={copied} copyError={copyError} />
       <section className="card results">
         <p className="eyebrow">And the winner is…</p>
         <div className="trophy">✦</div>
@@ -46,15 +42,7 @@ export const Winner = ({
             </div>
           ))}
         </div>
-        <button
-          className="button secondary"
-          onClick={() => {
-            setRankings({ you: null, them: null });
-            setDraftRankings({ you: null, them: null });
-            setPicks({ you: ["", "", ""], them: ["", "", ""] });
-            setDraftPicks({ you: ["", "", ""], them: ["", "", ""] });
-          }}
-        >
+        <button className="button secondary" onClick={resetSession}>
           Start over
         </button>
       </section>

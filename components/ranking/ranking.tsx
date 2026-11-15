@@ -8,10 +8,12 @@ type Props = {
   setPlayer: (player: Player) => void;
   copyLink: () => Promise<void>;
   copied: boolean;
-  setRankings: React.Dispatch<React.SetStateAction<Record<Player, string[] | null>>>;
+  copyError: string | null;
   rankings: Record<Player, string[] | null>;
   draftRankings: Record<Player, string[] | null>;
   setDraftRankings: React.Dispatch<React.SetStateAction<Record<Player, string[] | null>>>;
+  submitRanking: (ranking: string[]) => void;
+  onDraftChange: () => void;
   names: Record<Player, string>;
   movies: string[];
   id: string;
@@ -22,10 +24,12 @@ export const Ranking = ({
   setPlayer,
   copyLink,
   copied,
-  setRankings,
+  copyError,
   rankings,
   draftRankings,
   setDraftRankings,
+  submitRanking,
+  onDraftChange,
   names,
   movies,
   id,
@@ -35,11 +39,12 @@ export const Ranking = ({
     player,
     movies,
     setRankings: setDraftRankings,
+    onDraftChange,
   });
 
   return (
     <main className="app-shell">
-      <Header id={id} onCopy={copyLink} copied={copied} />
+      <Header id={id} onCopy={copyLink} copied={copied} copyError={copyError} />
       <section className="card">
         <PlayerToggle player={player} setPlayer={setPlayer} names={names} />
         <p className="eyebrow">Rank your picks</p>
@@ -61,18 +66,13 @@ export const Ranking = ({
             </div>
           ))}
         </div>
-        <button
-          className="button primary"
-          onClick={() => {
-            setDraftRankings((previous) => ({ ...previous, [player]: currentRanking }));
-            setRankings((previous) => ({ ...previous, [player]: currentRanking }));
-          }}
-        >
+        <button className="button primary" onClick={() => submitRanking(currentRanking)}>
           {rankings[player] ? "Update ranking" : "Lock in my ranking"} <span>→</span>
         </button>
         {rankings[player] && (
           <p className="waiting">
-            Your ranking is in. Waiting for {player === Player.YOU ? names[Player.THEM] : names[Player.YOU]}…
+            Your ranking is in. Waiting for{" "}
+            {player === Player.YOU ? names[Player.THEM] : names[Player.YOU]}…
           </p>
         )}
       </section>

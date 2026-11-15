@@ -1,5 +1,7 @@
 import { makeCode } from "../utils/code";
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   const code = makeCode();
 

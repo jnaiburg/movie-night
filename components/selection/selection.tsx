@@ -6,13 +6,15 @@ import { useSelectionViewModel } from "./selection.viewModel";
 type Props = {
   player: Player;
   setPlayer: (player: Player) => void;
-  copyLink: () => void;
+  copyLink: () => Promise<void>;
   copied: boolean;
+  copyError: string | null;
   id: string;
   picks: Record<Player, string[]>;
   draftPicks: Record<Player, string[]>;
   setDraftPicks: React.Dispatch<React.SetStateAction<Record<Player, string[]>>>;
   submitPicks: () => void;
+  onDraftChange: () => void;
   names: Record<Player, string>;
 };
 
@@ -21,17 +23,19 @@ export const Selection = ({
   setPlayer,
   copyLink,
   copied,
+  copyError,
   id,
   picks,
   draftPicks,
   setDraftPicks,
   submitPicks,
+  onDraftChange,
   names,
 }: Props) => {
-  const { updatePick } = useSelectionViewModel({ setDraftPicks, player });
+  const { updatePick } = useSelectionViewModel({ setDraftPicks, player, onDraftChange });
   return (
     <main className="app-shell">
-      <Header id={id} onCopy={copyLink} copied={copied} />
+      <Header id={id} onCopy={copyLink} copied={copied} copyError={copyError} />
       <section className="card">
         <PlayerToggle player={player} setPlayer={setPlayer} names={names} />
         <p className="eyebrow">Round one of two</p>

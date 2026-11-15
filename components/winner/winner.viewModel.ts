@@ -5,13 +5,18 @@ type Props = {
 };
 
 export const useWinnerViewModel = ({ bothRanked, movies, rankings }: Props) => {
+  const pointsFor = (ranking: string[], movie: string) => {
+    const position = ranking.indexOf(movie);
+    return position === -1 ? 0 : movies.length - position;
+  };
+
   const scores = bothRanked
     ? movies
         .map((movie) => ({
           movie,
-          score: rankings.you!.indexOf(movie) + rankings.them!.indexOf(movie) + 2,
+          score: pointsFor(rankings.you!, movie) + pointsFor(rankings.them!, movie),
         }))
-        .sort((a, b) => a.score - b.score)
+        .sort((a, b) => b.score - a.score)
     : [];
 
   return {
