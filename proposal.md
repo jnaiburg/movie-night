@@ -27,23 +27,23 @@ The app should make this process effortless.
 
 # Goals
 
-* Simple and intuitive user experience
-* No user accounts required
-* Shareable sessions via URL
-* Real-time updates between both users
-* Mobile-friendly design
-* Lightweight and fast
+- Simple and intuitive user experience
+- No user accounts required
+- Shareable sessions via URL
+- Real-time updates between both users
+- Mobile-friendly design
+- Lightweight and fast
 
 ---
 
 # Non-Goals (v1)
 
-* User authentication
-* Long-term movie history
-* Personalized recommendations
-* Streaming provider integration
-* Ratings/reviews
-* Multi-user support (more than two people)
+- User authentication
+- Long-term movie history
+- Personalized recommendations
+- Streaming provider integration
+- Ratings/reviews
+- Multi-user support (more than two people)
 
 These can be explored in future versions if desired.
 
@@ -79,15 +79,15 @@ Example:
 
 **Person A**
 
-* Dune
-* Arrival
-* Knives Out
+- Dune
+- Arrival
+- Knives Out
 
 **Person B**
 
-* Shrek
-* The Prestige
-* Up
+- Shrek
+- The Prestige
+- Up
 
 Once both users have submitted their movies, the app advances automatically.
 
@@ -101,9 +101,9 @@ Each user independently ranks every movie from 1–6.
 
 Possible UI ideas:
 
-* Drag and drop list
-* Number selector
-* Click to reorder
+- Drag and drop list
+- Number selector
+- Click to reorder
 
 Rankings remain hidden until both users finish.
 
@@ -113,9 +113,11 @@ Rankings remain hidden until both users finish.
 
 After both rankings are submitted:
 
-* Rankings are combined
-* Total score is calculated
-* Winning movie is displayed
+- Rankings are combined
+- Total score is calculated
+- Winning movie is displayed
+
+Each movie earns 6 points for a 1st-place ranking, 5 for 2nd, and so on down to 1 point for 6th. The movie with the highest combined score wins.
 
 Example:
 
@@ -129,14 +131,14 @@ Optionally show:
 
 | Movie        | Total Score |
 | ------------ | ----------: |
-| Knives Out   |           4 |
-| Dune         |           6 |
+| Knives Out   |          12 |
+| Dune         |          10 |
 | Arrival      |           8 |
-| Shrek        |          10 |
-| Up           |          13 |
-| The Prestige |          15 |
+| Shrek        |           6 |
+| Up           |           4 |
+| The Prestige |           2 |
 
-(Lower score wins.)
+(Higher score wins.)
 
 ---
 
@@ -144,23 +146,23 @@ Optionally show:
 
 ## Frontend
 
-* Next.js
-* React
-* TypeScript
-* Tailwind CSS
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
 
 ## Backend
 
 Firebase
 
-* Cloud Firestore
-* Real-time listeners
+- Cloud Firestore
+- Real-time listeners
 
 No custom backend server.
 
 Deployment:
 
-* Vercel
+- Vercel
 
 ---
 
@@ -194,41 +196,41 @@ Deployment:
 
 ## Home
 
-* Create Session button
+- Create Session button
 
 ---
 
 ## Join Session
 
-* Session automatically loads from URL
+- Session automatically loads from URL
 
 ---
 
 ## Movie Entry
 
-* Enter three movie titles
-* Submit
+- Enter three movie titles
+- Submit
 
 ---
 
 ## Ranking
 
-* Display six movies
-* Rank them in preferred order
-* Submit
+- Display six movies
+- Rank them in preferred order
+- Submit
 
 ---
 
 ## Results
 
-* Winning movie
-* Final rankings
-* Combined scores
+- Winning movie
+- Final rankings
+- Combined scores
 
 Optional:
 
-* Confetti animation
-* "Start Another Movie Night"
+- Confetti animation
+- "Start Another Movie Night"
 
 ---
 
@@ -256,9 +258,9 @@ Store completed movie nights locally.
 
 If two movies tie:
 
-* Random wheel
-* Coin flip
-* Sudden death vote
+- Random wheel
+- Coin flip
+- Sudden death vote
 
 ---
 
@@ -278,21 +280,21 @@ Each user submits three movies and the app randomly chooses one.
 
 ## Theme Support
 
-* Dark Mode
-* Light Mode
+- Dark Mode
+- Light Mode
 
 ---
 
 # Future Ideas
 
-* More than two players
-* Streaming availability
-* Letterboxd integration
-* "Already Watched" filtering
-* Favorite genres
-* Movie statistics
-* Seasonal themes (Halloween, Christmas, etc.)
-* AI-generated movie recommendations based on both users' tastes
+- More than two players
+- Streaming availability
+- Letterboxd integration
+- "Already Watched" filtering
+- Favorite genres
+- Movie statistics
+- Seasonal themes (Halloween, Christmas, etc.)
+- AI-generated movie recommendations based on both users' tastes
 
 ---
 
@@ -300,13 +302,13 @@ Each user submits three movies and the app randomly chooses one.
 
 Version 1 is considered complete when:
 
-* Two users can join the same session.
-* Both users can submit three movies.
-* Both users can rank all six movies.
-* Rankings are synchronized in real time.
-* The app correctly calculates the winner.
-* The app works well on desktop and mobile.
-* The application is deployed publicly.
+- Two users can join the same session.
+- Both users can submit three movies.
+- Both users can rank all six movies.
+- Rankings are synchronized in real time.
+- The app correctly calculates the winner.
+- The app works well on desktop and mobile.
+- The application is deployed publicly.
 
 ---
 
@@ -314,11 +316,11 @@ Version 1 is considered complete when:
 
 This project is intentionally small in scope while still providing opportunities to learn:
 
-* Firebase Firestore
-* Real-time synchronization
-* URL routing
-* React state management
-* Responsive UI design
-* Full deployment workflow with Vercel
+- Firebase Firestore
+- Real-time synchronization
+- URL routing
+- React state management
+- Responsive UI design
+- Full deployment workflow with Vercel
 
 The end result is a useful application that solves a real problem while serving as an excellent portfolio project.

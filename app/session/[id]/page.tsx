@@ -14,18 +14,43 @@ export default function SessionPage() {
     picks,
     draftPicks,
     setDraftPicks,
-    setPicks,
     submitPicks,
     rankings,
-    setRankings,
     draftRankings,
     setDraftRankings,
     copied,
+    copyError,
+    loading,
+    syncError,
     ready,
     movies,
     bothRanked,
     copyLink,
+    submitRanking,
+    resetSession,
+    markPicksDirty,
+    markRankingsDirty,
   } = useSessionPageViewModel();
+
+  if (syncError)
+    return (
+      <main className="app-shell">
+        <section className="card">
+          <p className="eyebrow">Shared session unavailable</p>
+          <h1>Could not sync this movie night.</h1>
+          <p className="subcopy">{syncError}</p>
+        </section>
+      </main>
+    );
+
+  if (loading)
+    return (
+      <main className="app-shell">
+        <section className="card">
+          <p className="subcopy">Loading shared movie night…</p>
+        </section>
+      </main>
+    );
 
   if (bothRanked)
     return (
@@ -33,10 +58,8 @@ export default function SessionPage() {
         id={id}
         copyLink={copyLink}
         copied={copied}
-        setRankings={setRankings}
-        setPicks={setPicks}
-        setDraftPicks={setDraftPicks}
-        setDraftRankings={setDraftRankings}
+        copyError={copyError}
+        resetSession={resetSession}
         bothRanked={bothRanked}
         movies={movies}
         rankings={rankings}
@@ -51,10 +74,12 @@ export default function SessionPage() {
         setPlayer={setPlayer}
         copyLink={copyLink}
         copied={copied}
-        setRankings={setRankings}
+        copyError={copyError}
         rankings={rankings}
         draftRankings={draftRankings}
         setDraftRankings={setDraftRankings}
+        submitRanking={submitRanking}
+        onDraftChange={markRankingsDirty}
         names={names}
         movies={movies}
       />
@@ -66,11 +91,13 @@ export default function SessionPage() {
       setPlayer={setPlayer}
       copyLink={copyLink}
       copied={copied}
+      copyError={copyError}
       id={id}
       picks={picks}
       draftPicks={draftPicks}
       setDraftPicks={setDraftPicks}
       submitPicks={submitPicks}
+      onDraftChange={markPicksDirty}
       names={names}
     />
   );

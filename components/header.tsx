@@ -1,18 +1,26 @@
 type Props = {
   id?: string;
-  onCopy: () => void;
+  onCopy: () => Promise<void>;
   copied: boolean;
+  copyError: string | null;
 };
 
-export const Header = ({ id, onCopy, copied }: Props) => {
+export const Header = ({ id, onCopy, copied, copyError }: Props) => {
   return (
     <header>
       <a href="/">
         MOVIE NIGHT <i>✦</i>
       </a>
-      <button className="share" onClick={onCopy}>
-        {copied ? "Copied!" : id ? `Share ${id}` : "Copy link"}
-      </button>
+      <div className="share-control">
+        <button className="share" onClick={onCopy}>
+          {copyError ? "Copy failed" : copied ? "Copied!" : id ? `Share ${id}` : "Copy link"}
+        </button>
+        {copyError && (
+          <span className="share-error" role="alert">
+            {copyError}
+          </span>
+        )}
+      </div>
     </header>
   );
 };
